@@ -53,7 +53,7 @@ function decodePunycode(input) {
   return String.fromCodePoint(...output);
 }
 
-function toUnicodeHost(host) {
+export function toUnicodeHost(host) {
   if (host.startsWith('[') && host.endsWith(']')) return host;
   return host.split('.').map(label => {
     if (!label.toLowerCase().startsWith('xn--')) return label;
@@ -99,7 +99,7 @@ export function normalizeInput(raw) {
   return url;
 }
 
-function assembleURL(url, host) {
+export function assembleURL(url, host) {
   // Only replace the host in the serialized URL, preserving credentials,
   // port, path, percent-encoding, query and fragment exactly as parsed.
   const start = url.protocol.length + 2;
